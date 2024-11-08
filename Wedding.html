@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: black;
+           background-repeat: no-repeat;
+           background-position: center;
+        font-family: Arial, sans-serif;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            width: 100%;
+            max-width: 1000px;
+        }
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        /* Lightbox styling */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Photo Gallery</h1>
+</header>
+
+<div class="gallery">
+    <div class="gallery-item">
+        <img src="wedding 1.jpeg" alt="Photo 1">
+    </div>
+    <div class="gallery-item">
+        <img src="wedding2.jpg" alt="Photo 2">
+    </div>
+    <div class="gallery-item">
+        <img src="wedding3.jpg" alt="Photo 3">
+    </div>
+    <div class="gallery-item">
+        <img src="wedding4.jpg" alt="Photo 4">
+    </div>
+    <div class="gallery-item">
+        <img src="wedding5.jpg" alt="Photo 5">
+    </div>
+    <div class="gallery-item">
+        <img src="wedding6.jpg" alt="Photo 6">
+    </div>
+    <div class="gallery-item">
+        <img src="wedding7.jpg" alt="Photo 1">
+    </div>
+    <div class="gallery-item">
+        <img src="wedding8.jpg" alt="Photo 2">
+    </div>
+    <div class="gallery-item">
+        <img src="wedding9.jpg" alt="Photo 3">
+    </div>
+    <div class="gallery-item">
+        <img src="wedding10.jpg" alt="Photo 4">
+    </div>
+    <div class="gallery-item">
+        <img src="wedding11.jpg" alt="Photo 5">
+    </div>
+    <div class="gallery-item">
+        <img src="wedding12.jpg" alt="Photo 6">
+    </div>
+</div>
+
+<div id="lightbox" class="lightbox">
+    <img id="lightbox-img" src="" alt="Enlarged photo">
+</div>
+
+<script>
+    const galleryItems = document.querySelectorAll(".gallery-item img");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    galleryItems.forEach(item => {
+        item.addEventListener("click", () => {
+            lightbox.style.display = "flex";
+            lightboxImg.src = item.src;
+        });
+    });
+
+    lightbox.addEventListener("click", () => {
+        lightbox.style.display = "none";
+    });
+</script>
+
+</body>
+</html>
